@@ -1,0 +1,25 @@
+{
+  "name": "csc-307-app",
+  "version": "1.0.0",
+  "description": "\"# CSC-307\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jzaval17/CSC-307.git"
+  },
+  "author": "Juan Zavala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jzaval17/CSC-307/issues"
+  },
+  "homepage": "https://github.com/jzaval17/CSC-307#readme"
+
+  ,
+  "workspaces": [
+      "packages/*"
+  ]
+
+}
