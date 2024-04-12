@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
 import Table from './Table';
+import Form from "./Form";
 
 function MyApp() {
     // Initialize state with initial character data using useState hook
-    const [characters, setCharacters] = useState([
-        { name: "Charlie", job: "Janitor" },
-        { name: "Mac", job: "Bouncer" },
-        { name: "Dee", job: "Aspiring actress" },
-        { name: "Dennis", job: "Bartender" }
-    ]);
+    const [characters, setCharacters] = useState([]);
 
     // Function to remove a character by index
     function removeCharacter(index) {
@@ -18,9 +14,13 @@ function MyApp() {
 
     return (
         <div className="container">
-            <Table characterData={characters} removeCharacter={removeCharacter} />
+          <Table
+            characterData={characters}
+            removeCharacter={removeCharacter} // Corrected the function reference here
+          />
+          <Form />
         </div>
-    );
+      );
 }
 
 export default MyApp;

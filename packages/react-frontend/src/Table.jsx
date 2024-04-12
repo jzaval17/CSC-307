@@ -47,4 +47,3 @@ function TableBody(props) {
       );
     }
       export default Table;
-  
