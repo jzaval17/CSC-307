@@ -12,13 +12,17 @@ function MyApp() {
         setCharacters(updatedCharacters); // Update state
     }
 
+    function updateList(person) {
+        setCharacters([...characters, person]);
+    }
+
     return (
         <div className="container">
           <Table
             characterData={characters}
             removeCharacter={removeCharacter} // Corrected the function reference here
           />
-          <Form />
+          <Form handleSubmit={updateList}/>
         </div>
       );
 }
