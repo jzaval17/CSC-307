@@ -15,11 +15,11 @@
   "bugs": {
     "url": "https://github.com/jzaval17/CSC-307/issues"
   },
-  "homepage": "https://github.com/jzaval17/CSC-307#readme"
-
-  ,
+  "homepage": "https://github.com/jzaval17/CSC-307#readme",
   "workspaces": [
-      "packages/*"
-  ]
-
+    "packages/*"
+  ],
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
 }
