@@ -35,15 +35,28 @@ function TableBody(props) {
      );
   }
   
-  function Table(props) {
+  function Table({ characterData, removeCharacter }) {
     return (
         <table>
-          <TableHeader />
-          <TableBody
-            characterData={props.characterData}
-            removeCharacter={props.removeCharacter}
-          />
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {characterData.map((character, index) => (
+                    <tr key={character.id}>
+                        <td>{character.id}</td>
+                        <td>{character.name}</td>
+                        <td>{character.job}</td>
+                        <td><button onClick={() => removeCharacter(character.id)}>Delete</button></td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
-      );
-    }
+    );
+}
       export default Table;

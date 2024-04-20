@@ -1,8 +1,11 @@
 import express from 'express';
+import cors from "cors";
+
 
 const app = express();
 const port = 8000;
 
+app.use(cors());
 app.use(express.json());  // Middleware to parse JSON bodies
 
 const users = {
@@ -23,9 +26,11 @@ const findUserById = (id) => users["users_list"].find((user) => user["id"] === i
 
 // Helper function to add a user
 const addUser = (user) => {
+  user.id = user.id || Math.random().toString(36).substring(2, 9); // Simple ID generation
   users["users_list"].push(user);
   return user;
 };
+
 
 // Route to get all users or by name
 app.get("/users", (req, res) => {
@@ -55,10 +60,10 @@ app.delete("/users/:id", (req, res) => {
   const id = req.params.id;
   let result = findUserById(id);
   if (result === undefined) {
-    res.status(404).send("Resource not found.");
+    res.status(404).send("Resource not found."); // Not found
   } else {
     users["users_list"] = users["users_list"].filter((user) => user["id"] !== id);
-    res.send(result);
+    res.status(204).send(); // No content
   }
 });
 
@@ -79,8 +84,13 @@ app.get("/users/search", (req, res) => {
 // Route to add a new user
 app.post("/users", (req, res) => {
   const userToAdd = req.body;
-  addUser(userToAdd);
-  res.status(200).send(); // Optionally, you can return the added user object or a success message
+  const newUser = addUser(userToAdd);
+  res.status(201).send(newUser); // Created
+});
+
+app.post("/users/:id", (req, res) => {
+  const newUser = addUser(req.body);
+  res.send(newUser);
 });
 
 app.get("/", (req, res) => {
