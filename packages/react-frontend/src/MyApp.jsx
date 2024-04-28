@@ -13,7 +13,7 @@ function MyApp() {
       })
       .then(response => {
           if (response.status === 204) {
-              setCharacters(prevCharacters => prevCharacters.filter(character => character.id !== characterId));
+              setCharacters(prevCharacters => prevCharacters.filter(character => character._id !== characterId));
           } else if (response.status === 404) {
               console.error('User not found');
               alert('User not found.'); // Provide feedback to the user
